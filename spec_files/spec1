@@ -1,0 +1,392 @@
+# Mine Compliance & Monitoring System — Technical Specification
+
+> This document is a direct structural transcription of the provided architecture. No modules, endpoints, fields, or behaviors have been added, inferred, or assumed beyond what was specified. Use this as the source-of-truth reference for code generation.
+
+---
+
+## System Architecture (High-Level Flow)
+
+```
+Users
+   │
+   ├────────────┬────────────────┐
+   │            │                │
+Mobile Web  Desktop Web   Government Portal
+   │            │                │
+   └────────────┴────────────────┘
+                │
+        React.js Frontend
+                │
+        JWT Authentication
+                │
+         Express.js API
+                │
+   ┌────────────┼────────────┐
+   │            │            │
+PostgreSQL   Python AI     AWS S3
+   │            │            │
+   └────────────┼────────────┘
+                │
+     Reports • Alerts • OCR
+                │
+      Real-Time Dashboard
+```
+
+---
+
+## 🖥️ FRONTEND (React.js)
+
+### 1. Authentication
+- Login
+- Forgot Password
+- OTP Verification
+- Reset Password
+- Profile Management
+- Role Selection
+
+### 2. Dashboard
+
+**Supervisor Dashboard**
+- Attendance Summary
+- Inspection Status
+- Today's Tasks
+- Compliance Score
+- AI Alerts
+- Notifications
+- Quick Actions
+
+**Manager Dashboard**
+- Mine Performance
+- Production Summary
+- Safety Overview
+- Pending Approvals
+- Compliance Graphs
+- Analytics
+
+**Government Dashboard**
+- Multi-Mine Monitoring
+- Compliance Ranking
+- Audit Status
+- Violations
+- Reports
+
+### 3. Attendance Module
+- Daily Attendance
+- Shift Management
+- Contractor Attendance
+- QR Attendance (Optional)
+- Search Employee
+- Attendance History
+- Attendance Analytics
+
+### 4. Employee Module
+- Employee List
+- Employee Profile
+- Add Employee
+- Department
+- Shift Allocation
+- ID Card
+
+### 5. Contractor Module
+- Contractor Registration
+- Contract Details
+- Worker List
+- Attendance
+- Performance
+- Contract Expiry
+- Compliance Documents
+
+### 6. Inspection Module
+- New Inspection
+- Geo-tag Location
+- Upload Photos
+- Inspection Checklist
+- Safety Violations
+- Corrective Actions
+- Inspection History
+
+### 7. Compliance Module
+- DGMS Compliance
+- Labour Compliance
+- Environmental Compliance
+- Production Compliance
+- Due Dates
+- Compliance Calendar
+
+### 8. Safety Module
+- Incident Reporting
+- Near Miss Reports
+- PPE Compliance
+- Hazard Reporting
+- Emergency Contacts
+
+### 9. Production Module
+- Daily Production
+- Shift Production
+- Machine Status
+- Equipment Utilization
+- Productivity Graph
+
+### 10. Environmental Module
+- Air Quality
+- Dust Monitoring
+- Water Monitoring
+- Waste Management
+- Environmental Reports
+
+### 11. GIS Module
+- Mine Map
+- Mine Locations
+- Heat Maps
+- Risk Zones
+- Inspection Locations
+
+### 12. OCR Module
+- Upload Document
+- OCR Processing
+- Extracted Data
+- Verify Information
+- Save Record
+
+### 13. AI Insights
+- Risk Prediction
+- Compliance Score
+- AI Recommendations
+- Violation Detection
+- Trend Analysis
+
+### 14. Reports
+- Attendance Report
+- Inspection Report
+- Compliance Report
+- Production Report
+- Safety Report
+- Export PDF
+- Export Excel
+
+### 15. Notifications
+- AI Alerts
+- Compliance Alerts
+- Reminder Notifications
+- Escalation Alerts
+
+### 16. Grievance Portal
+- Submit Complaint
+- Complaint Tracking
+- Resolution Status
+- Feedback
+
+### 17. Workflow
+- Pending Approvals
+- Digital Signatures
+- Escalation Workflow
+- Approval History
+
+### 18. Settings
+- User Management
+- Roles & Permissions
+- Mine Configuration
+- AI Settings
+- Notification Settings
+
+---
+
+## ⚙️ BACKEND (Node.js + Express)
+
+### Authentication APIs
+```
+POST   /login
+POST   /logout
+POST   /register
+POST   /forgot-password
+POST   /reset-password
+GET    /profile
+PUT    /profile
+```
+
+### Dashboard APIs
+```
+GET    /dashboard
+GET    /analytics
+GET    /notifications
+```
+
+### Employee APIs
+```
+GET    /employees
+POST   /employees
+PUT    /employees/:id
+DELETE /employees/:id
+```
+
+### Attendance APIs
+```
+POST   /attendance
+GET    /attendance
+PUT    /attendance
+GET    /attendance/report
+```
+
+### Contractor APIs
+```
+GET    /contractors
+POST   /contractor
+PUT    /contractor
+DELETE /contractor
+```
+
+### Inspection APIs
+```
+POST   /inspection
+GET    /inspection
+PUT    /inspection
+DELETE /inspection
+```
+
+### Compliance APIs
+```
+GET    /compliance
+POST   /compliance
+PUT    /compliance
+```
+
+### Production APIs
+```
+POST   /production
+GET    /production
+GET    /production/report
+```
+
+### Safety APIs
+```
+POST   /incident
+GET    /incidents
+POST   /hazard
+GET    /hazards
+```
+
+### Environmental APIs
+```
+POST   /environment
+GET    /environment
+```
+
+### Grievance APIs
+```
+POST   /grievance
+GET    /grievances
+PUT    /grievance/status
+```
+
+### OCR APIs
+```
+POST   /upload-document
+POST   /ocr-process
+GET    /ocr-history
+```
+
+### AI APIs (Python Service)
+```
+POST   /predict-risk
+POST   /attendance-analysis
+POST   /compliance-score
+POST   /recommendation
+POST   /trend-analysis
+```
+
+### GIS APIs
+```
+GET    /mine-locations
+GET    /inspection-map
+GET    /risk-zones
+```
+
+### Reports APIs
+```
+GET    /reports
+POST   /generate-report
+GET    /download-report
+```
+
+### Notification APIs
+```
+GET    /notifications
+POST   /send-alert
+PUT    /mark-read
+```
+
+### Workflow APIs
+```
+POST   /approve
+POST   /reject
+POST   /escalate
+GET    /workflow
+```
+
+### Admin APIs
+```
+GET    /users
+POST   /roles
+PUT    /permissions
+```
+
+---
+
+## 🗄️ DATABASE (PostgreSQL)
+
+### Core Tables
+- Users
+- Roles
+- Employees
+- Contractors
+- Attendance
+- Inspections
+- Compliance
+- Production
+- SafetyIncidents
+- EnvironmentalData
+- Grievances
+- Documents
+- OCRData
+- AIInsights
+- Notifications
+- Workflows
+- AuditLogs
+- MineLocations
+- Reports
+
+---
+
+## 🤖 AI MODULE (Python)
+
+- Attendance Anomaly Detection
+- Compliance Risk Prediction
+- Violation Detection
+- Safety Risk Scoring
+- Trend Forecasting
+- Smart Recommendations
+- OCR Extraction
+- Report Summarization
+
+---
+
+## ☁️ AWS SERVICES
+
+| Service | Purpose |
+|---|---|
+| EC2 | Backend hosting |
+| S3 | Document & image storage |
+| RDS (PostgreSQL) | Managed database |
+| CloudFront | Fast content delivery |
+| IAM | Identity & access management |
+| CloudWatch | Monitoring & logs |
+| AWS Backup | Automated backups |
+| Elastic Load Balancer | Traffic distribution (for scaling) |
+
+---
+
+## Notes for Codex
+
+- This spec preserves the exact module names, API routes, table names, and service names as given in the source document.
+- No field-level schemas, request/response payloads, authentication scheme details (beyond "JWT Authentication" as stated in the flow diagram), or business logic have been added — these were not specified in the source and should be requested explicitly before implementation.
+- No additional endpoints, tables, or AI capabilities beyond those listed have been introduced.

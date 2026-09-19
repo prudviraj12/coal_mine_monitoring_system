@@ -1,0 +1,32 @@
+# Node / frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+.env.*
+!/.env.example
+backend/.env
+backend/.env.*
+
+# Databases / local data
+*.sqlite
+*.sqlite3
+*.db
+backend/data/*.sqlite*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Build output
+coverage/

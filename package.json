@@ -1,0 +1,11 @@
+{
+  "name": "coaltrack",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node scripts/dev.js",
+    "dev": "node scripts/dev.js",
+    "test": "npm --prefix backend test && npm --prefix frontend test",
+    "build": "npm --prefix frontend run build"
+  }
+}
