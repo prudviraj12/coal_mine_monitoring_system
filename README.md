@@ -23,5 +23,6 @@ Starting only the frontend will leave login unavailable because authentication i
 | Supervisor | `supervisor@coaltrack.gov.in` | `sup123` |
 | Manager | `manager@coaltrack.gov.in` | `man123` |
 | Regulator | `regulator@coaltrack.gov.in` | `reg123` |
+| System administrator | `admin@coaltrack.gov.in` | `admin123` |
 
 Run all automated tests with `npm test` and build the frontend with `npm run build`.

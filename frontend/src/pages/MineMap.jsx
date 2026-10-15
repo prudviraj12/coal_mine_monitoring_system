@@ -74,8 +74,9 @@ export default function MineMap({ mineId }) {
           </div>
 
           {/* Interactive SVG Mine Layout Diagram (Light/Government Map Style) */}
-          <div className="w-full h-80 my-auto relative bg-slate-100/90 rounded-xl border border-slate-300 p-4 flex items-center justify-center">
-            <svg viewBox="0 0 800 400" className="w-full h-full">
+          <div className="w-full h-80 my-auto relative bg-slate-100/90 rounded-xl border border-slate-300 p-1 flex items-center justify-center overflow-hidden">
+            <iframe title="Google Maps mine location" className="w-full h-full rounded-lg border-0" loading="lazy" src={`https://www.google.com/maps?q=${zones[0]?.lat || 22.3595},${zones[0]?.lng || 82.7501}&z=15&output=embed`} />
+            <svg viewBox="0 0 800 400" className="hidden">
               {/* Mine Outer Boundary */}
               <polygon
                 points="50,50 750,30 720,370 70,350"

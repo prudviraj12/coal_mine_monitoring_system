@@ -1,0 +1,728 @@
+# CoalTrack AI - Major UI/UX & Role-Based Access Overhaul
+
+You are a senior full-stack engineer and UI/UX designer.
+
+Your task is to completely redesign the CoalTrack AI web application into a production-quality Government Coal Mine Governance Portal suitable for Smart India Hackathon (SIH).
+
+DO NOT create placeholder pages.
+
+DO NOT simplify the application.
+
+Everything should look like a real government portal used daily by thousands of employees.
+
+Maintain the existing tech stack and project structure.
+
+--------------------------------------------------------
+
+PROJECT GOAL
+
+CoalTrack AI is an AI-powered platform for managing coal mine operations, worker safety, inspections, attendance, statutory compliance, and DGMS governance.
+
+The application must have completely different experiences for each user role.
+
+Every role should immediately understand:
+
+• What they are responsible for
+• What actions they can perform
+• What information they are allowed to access
+
+No dashboard should feel identical.
+
+--------------------------------------------------------
+
+PART 1 — LANDING PAGE
+
+Create a professional landing page before login.
+
+Sections:
+
+Hero Section
+- Large background image/video of a modern Indian coal mine
+- Dark government theme
+- Animated statistics
+
+Hero title:
+
+CoalTrack AI
+
+AI Powered Coal Mine Governance & Compliance Platform
+
+Subtitle:
+
+Digitizing inspections, workforce management, statutory compliance, and mine safety using Artificial Intelligence.
+
+Buttons
+
+- Access Secure Portal
+- Learn More
+
+--------------------------------------------------------
+
+FEATURES SECTION
+
+Display modern cards for:
+
+• AI Compliance Monitoring
+• Smart Attendance
+• Worker Safety
+• Hazard Detection
+• DGMS Inspection
+• Equipment Monitoring
+• Analytics Dashboard
+• AI Risk Prediction
+• Incident Reporting
+• Compliance Reports
+
+--------------------------------------------------------
+
+WORKFLOW SECTION
+
+Worker
+↓
+
+Supervisor
+↓
+
+Mine Manager
+↓
+
+DGMS Inspector
+↓
+
+Government Dashboard
+
+Animate the workflow.
+
+--------------------------------------------------------
+
+AI CAPABILITIES
+
+Show the AI engine capabilities.
+
+Cards:
+
+OCR
+
+Attendance Analytics
+
+Risk Prediction
+
+Hazard Detection
+
+Satellite Monitoring
+
+Compliance Intelligence
+
+Incident Classification
+
+Smart Recommendations
+
+--------------------------------------------------------
+
+PART 2 — ROLE SELECTION
+
+After clicking Access Portal
+
+User selects one role.
+
+Roles
+
+Mine Worker
+
+Field Supervisor
+
+Mine Manager
+
+DGMS Government Inspector
+
+System Administrator
+
+Each role card should have
+
+icon
+
+description
+
+color
+
+responsibilities
+
+Clicking a role changes
+
+login illustration
+
+theme accent
+
+description
+
+login placeholder
+
+--------------------------------------------------------
+
+PART 3 — LOGIN
+
+Professional Government Login
+
+Fields
+
+Employee ID
+
+Password
+
+Remember Me
+
+Government Digital Authentication
+
+Forgot Password
+
+Audit Logging Enabled
+
+Show role badge on login page.
+
+--------------------------------------------------------
+
+PART 4 — ROLE BASED DASHBOARDS
+
+Every role must have a completely unique dashboard.
+
+Never reuse widgets.
+
+--------------------------------------------------------
+
+ROLE 1
+
+MINE WORKER
+
+Purpose:
+
+Perform daily work safely.
+
+Dashboard includes
+
+Today's Shift
+
+Attendance
+
+Salary Summary
+
+Assigned Tasks
+
+Announcements
+
+Safety Alerts
+
+Emergency Button
+
+AI Safety Map
+
+Personal Risk Score
+
+Recent Activity
+
+Quick Actions
+
+Worker can
+
+Check In
+
+Check Out
+
+View Attendance
+
+View Salary
+
+Download Payslip
+
+Apply Leave
+
+View Assigned Tasks
+
+Report Hazard
+
+Upload Hazard Photos
+
+Emergency SOS
+
+View Mine Map
+
+View Safety Training
+
+Receive Notifications
+
+Update Profile
+
+Worker cannot
+
+Manage Workers
+
+Assign Tasks
+
+Approve Attendance
+
+View Other Workers
+
+Edit Compliance
+
+--------------------------------------------------------
+
+AI SAFETY MAP
+
+This is one of the major features.
+
+Display a mine layout.
+
+Zones must be color coded.
+
+Green
+
+Safe
+
+Yellow
+
+Moderate Risk
+
+Orange
+
+High Risk
+
+Red
+
+Restricted
+
+Black
+
+Emergency
+
+Clicking any zone shows
+
+Risk Level
+
+Reason
+
+Gas concentration
+
+Roof stability
+
+Equipment status
+
+Water level
+
+AI Recommendation
+
+Safe Route
+
+Nearby Supervisor
+
+Workers should always know
+
+Current dangerous areas
+
+Restricted areas
+
+Safe paths
+
+Nearby hazards
+
+--------------------------------------------------------
+
+PERSONAL RISK SCORE
+
+Every worker receives a live AI score.
+
+Example
+
+Today's Risk
+
+Medium
+
+Reasons
+
+Working near blasting area
+
+High dust concentration
+
+Heavy machine traffic
+
+Suggestions
+
+Wear respirator
+
+Avoid Tunnel B
+
+Use Route C
+
+--------------------------------------------------------
+
+HAZARD REPORTING
+
+Worker uploads
+
+photo
+
+voice
+
+location
+
+description
+
+AI automatically classifies
+
+Rockfall
+
+Gas Leak
+
+Equipment Failure
+
+Fire
+
+Water Leakage
+
+Structural Damage
+
+Priority
+
+Confidence Score
+
+Automatically notify supervisor.
+
+--------------------------------------------------------
+
+ROLE 2
+
+FIELD SUPERVISOR
+
+Dashboard
+
+Today's Workforce
+
+Attendance Approval
+
+Worker Locations
+
+Pending Hazard Reports
+
+Equipment Status
+
+Inspection Schedule
+
+Leave Requests
+
+Safety Alerts
+
+Live Activities
+
+Quick Actions
+
+Supervisor can
+
+Approve Attendance
+
+Assign Tasks
+
+Create Shifts
+
+Verify Hazards
+
+Schedule Maintenance
+
+Approve Leave
+
+Inspect Areas
+
+Generate Daily Reports
+
+View Team Analytics
+
+Receive AI Alerts
+
+Cannot
+
+Modify Government Reports
+
+Delete Workers
+
+--------------------------------------------------------
+
+ROLE 3
+
+MINE MANAGER
+
+Dashboard
+
+Mine Overview
+
+Compliance %
+
+Production
+
+Equipment
+
+Workforce
+
+Revenue
+
+Safety Score
+
+Pending Approvals
+
+Analytics
+
+Manager can
+
+Manage Workers
+
+Manage Supervisors
+
+Production Reports
+
+Budget
+
+Equipment Allocation
+
+Compliance Reports
+
+Approve Requests
+
+Export Reports
+
+Monitor KPIs
+
+--------------------------------------------------------
+
+ROLE 4
+
+DGMS INSPECTOR
+
+Dashboard
+
+Mine Rankings
+
+Compliance Dashboard
+
+Inspection Calendar
+
+Pending Violations
+
+AI Risk Alerts
+
+Satellite Monitoring
+
+Environmental Alerts
+
+Inspection History
+
+Inspector can
+
+Schedule Inspection
+
+Conduct Inspection
+
+Upload Evidence
+
+Issue Notices
+
+Issue Fines
+
+Close Violations
+
+Generate Audit Reports
+
+Compare Mines
+
+View National Analytics
+
+Cannot edit operational worker data.
+
+--------------------------------------------------------
+
+ROLE 5
+
+SYSTEM ADMIN
+
+Dashboard
+
+All Mines
+
+Users
+
+Permissions
+
+Audit Logs
+
+System Health
+
+AI Monitoring
+
+Configurations
+
+National Analytics
+
+Admin has complete access.
+
+--------------------------------------------------------
+
+PART 5 — NOTIFICATIONS
+
+Each role receives different notifications.
+
+Worker
+
+Shift
+
+Salary
+
+Safety
+
+Hazards
+
+Supervisor
+
+Attendance
+
+Inspections
+
+Hazards
+
+Leave
+
+Manager
+
+Compliance
+
+Equipment
+
+Budget
+
+Government
+
+Mine violations
+
+Inspection due
+
+Environmental alerts
+
+--------------------------------------------------------
+
+PART 6 — LIVE ACTIVITY TIMELINE
+
+Every dashboard should contain
+
+Live Activity Feed
+
+Example
+
+09:20
+
+Worker Checked In
+
+09:31
+
+Hazard Reported
+
+09:45
+
+Inspection Completed
+
+10:02
+
+Attendance Approved
+
+10:15
+
+Gas Warning
+
+--------------------------------------------------------
+
+PART 7 — UI REQUIREMENTS
+
+Modern Government Dashboard
+
+Responsive
+
+Professional
+
+Minimal
+
+Use cards
+
+Glassmorphism where appropriate
+
+Dark blue
+
+White
+
+Coal orange
+
+Safety red
+
+Success green
+
+Rounded corners
+
+Beautiful charts
+
+Icons
+
+Animations
+
+Loading skeletons
+
+Transitions
+
+--------------------------------------------------------
+
+PART 8 — AI EXPERIENCE
+
+The application must visibly feel AI-powered.
+
+Examples
+
+Worker
+
+AI Safety Assistant
+
+Supervisor
+
+AI Workforce Recommendation
+
+Manager
+
+AI Production Prediction
+
+DGMS
+
+AI Compliance Intelligence
+
+Display AI recommendations throughout the application.
+
+--------------------------------------------------------
+
+PART 9 — CODE QUALITY
+
+Use reusable components.
+
+Follow best React practices.
+
+Role-based routing.
+
+Role-based navigation.
+
+Protected routes.
+
+Centralized permissions.
+
+Well-organized folders.
+
+No duplicated components.
+
+Responsive design.
+
+Production-ready UI.
+
+--------------------------------------------------------
+
+FINAL OBJECTIVE
+
+When judges open the application,
+
+it should feel like a real Government Coal Management System with five completely different portals, intelligent AI features, live safety monitoring, and a polished enterprise-grade experience rather than a student project.

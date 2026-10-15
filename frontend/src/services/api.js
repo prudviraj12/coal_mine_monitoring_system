@@ -92,6 +92,7 @@ export const fetchOCRHistory = () => request('/ocr/history');
 export const fetchWorkforce = mineId => request(withMine('/workforce', mineId));
 export const fetchGISZones = mineId => request(withMine('/gis', mineId));
 export const fetchGrievances = mineId => request(withMine('/grievances', mineId));
+export const fetchAdminOverview = () => request('/admin/overview');
 
 export const createCompliance = ruleData => request('/compliance', {
   method: 'POST',

@@ -53,6 +53,12 @@ export default function Sidebar({ activeTab, setActiveTab, currentRole }) {
     { id: 'grievances', label: 'Worker Complaints', icon: MessageSquareWarning }
   ];
 
+  const adminNavItems = [
+    { id: 'admin_dashboard', label: 'System Overview', icon: ShieldCheck, badge: 'Admin' },
+    { id: 'workforce', label: 'User Directory', icon: Users, badge: 'Users' },
+    { id: 'gis', label: 'National Mine Map', icon: MapPin, badge: 'GIS' }
+  ];
+
   let navItems = managerNavItems;
   let portalTitle = 'Mine Manager Portal';
 
@@ -65,6 +71,9 @@ export default function Sidebar({ activeTab, setActiveTab, currentRole }) {
   } else if (currentRole === 'regulator') {
     navItems = regulatorNavItems;
     portalTitle = 'Government Portal';
+  } else if (currentRole === 'admin') {
+    navItems = adminNavItems;
+    portalTitle = 'System Administration';
   }
 
   return (

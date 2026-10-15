@@ -144,6 +144,7 @@ function initDb() {
     insertUser.run('Anil Sharma (General Manager)', 'manager@coaltrack.gov.in', 'manager', 1, 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150', hashPassword('man123'));
     insertUser.run('Dr. V. K. Singh (DGMS Regulator)', 'regulator@coaltrack.gov.in', 'regulator', null, 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150', hashPassword('reg123'));
     insertUser.run('Ramesh Yadav', 'worker@coaltrack.gov.in', 'worker', 1, null, hashPassword('work123'));
+    insertUser.run('CoalTrack System Administrator', 'admin@coaltrack.gov.in', 'admin', null, null, hashPassword('admin123'));
 
     // Seed Mines
     const insertMine = db.prepare('INSERT INTO mines (name, code, subsidiary, location, lat, lng, status, safety_score, production_target, production_actual) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
@@ -277,6 +278,12 @@ function initDb() {
   if (!worker) {
     db.prepare('INSERT INTO users (name, email, role, mine_id, avatar, password_hash) VALUES (?, ?, ?, ?, ?, ?)')
       .run('Ramesh Yadav', 'worker@coaltrack.gov.in', 'worker', 1, null, hashPassword('work123'));
+  }
+
+  const admin = db.prepare('SELECT id FROM users WHERE email = ?').get('admin@coaltrack.gov.in');
+  if (!admin) {
+    db.prepare('INSERT INTO users (name, email, role, mine_id, avatar, password_hash) VALUES (?, ?, ?, ?, ?, ?)')
+      .run('CoalTrack System Administrator', 'admin@coaltrack.gov.in', 'admin', null, null, hashPassword('admin123'));
   }
 }
 

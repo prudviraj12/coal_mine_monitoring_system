@@ -68,6 +68,12 @@ export default function Navbar({ currentRole, setCurrentRole, activeMine, setAct
             <span>Mine Manager Portal</span>
           </div>
         )}
+        {currentRole === 'admin' && (
+          <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-100 text-slate-900 border border-slate-300 text-xs font-extrabold">
+            <ShieldCheck className="w-4 h-4 text-slate-700" />
+            <span>System Administration</span>
+          </div>
+        )}
       </div>
 
       {/* Right Side Status & User Info */}
@@ -98,7 +104,7 @@ export default function Navbar({ currentRole, setCurrentRole, activeMine, setAct
             </div>
             <div className="hidden sm:block text-left">
               <p className="text-xs font-bold text-slate-800">
-                {user?.name || (currentRole === 'supervisor' ? 'Rajesh Kumar' : currentRole === 'manager' ? 'Anil Sharma' : 'Dr. V. K. Singh')}
+                {user?.name || (currentRole === 'supervisor' ? 'Rajesh Kumar' : currentRole === 'manager' ? 'Anil Sharma' : currentRole === 'admin' ? 'System Administrator' : 'Dr. V. K. Singh')}
               </p>
               <p className="text-[10px] text-slate-500 font-semibold uppercase tracking-wider">{currentRole}</p>
             </div>

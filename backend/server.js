@@ -33,12 +33,12 @@ function requestedMineId(req) {
 }
 
 function effectiveMineId(req) {
-  if (req.user.role === 'regulator') return requestedMineId(req) || 1;
+  if (req.user.role === 'regulator' || req.user.role === 'admin') return requestedMineId(req) || 1;
   return Number(req.user.mine_id) || 1;
 }
 
 function optionalMineFilter(req, column = 'mine_id') {
-  const mineId = req.user.role === 'regulator' ? requestedMineId(req) : effectiveMineId(req);
+  const mineId = req.user.role === 'regulator' || req.user.role === 'admin' ? requestedMineId(req) : effectiveMineId(req);
   return mineId ? { sql: ` WHERE ${column} = ?`, params: [mineId] } : { sql: '', params: [] };
 }
 
@@ -108,8 +108,15 @@ app.get('/api/dashboard', (req, res) => {
 });
 
 app.get(['/api/mines', '/api/mine-locations'], (req, res) => {
-  if (req.user.role === 'regulator') return res.json(db.prepare('SELECT * FROM mines ORDER BY name').all());
+  if (req.user.role === 'regulator' || req.user.role === 'admin') return res.json(db.prepare('SELECT * FROM mines ORDER BY name').all());
   return res.json(db.prepare('SELECT * FROM mines WHERE id = ?').all(effectiveMineId(req)));
+});
+
+app.get('/api/admin/overview', allowRoles('admin'), (req, res) => {
+  const users = db.prepare('SELECT COUNT(*) AS count FROM users').get().count;
+  const mines = db.prepare('SELECT COUNT(*) AS count FROM mines').get().count;
+  const openIncidents = db.prepare("SELECT COUNT(*) AS count FROM inspections WHERE status != 'Resolved'").get().count;
+  return res.json({ users, mines, open_incidents: openIncidents, status: 'Operational' });
 });
 
 app.get('/api/compliance', allowRoles('supervisor', 'manager', 'regulator'), (req, res) => {

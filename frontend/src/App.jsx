@@ -2,6 +2,9 @@ import React, { lazy, Suspense, useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import { fetchDashboard, fetchMines, getStoredUser, logoutUser } from './services/api';
+import LandingPage from './pages/LandingPage';
+import RoleSelectionPage from './pages/RoleSelectionPage';
+import AdminDashboard from './pages/AdminDashboard';
 
 const Dashboard = lazy(() => import('./pages/Dashboard'));
 const Inspections = lazy(() => import('./pages/Inspections'));
@@ -21,6 +24,7 @@ const pageFallback = (
 );
 
 function dashboardTabForRole(role) {
+  if (role === 'admin') return 'admin_dashboard';
   if (role === 'worker') return 'worker_dashboard';
   if (role === 'supervisor') return 'supervisor_dashboard';
   if (role === 'regulator') return 'regulator_dashboard';
@@ -28,7 +32,10 @@ function dashboardTabForRole(role) {
 }
 
 export default function App() {
-  const [currentUser, setCurrentUser] = useState(() => getStoredUser());
+  const initialUser = getStoredUser();
+  const [accessStage, setAccessStage] = useState(initialUser ? 'portal' : 'landing');
+  const [selectedRole, setSelectedRole] = useState('worker');
+  const [currentUser, setCurrentUser] = useState(() => initialUser);
   const [currentRole, setCurrentRole] = useState(() => getStoredUser()?.role || 'supervisor');
   const [activeTab, setActiveTab] = useState(() => dashboardTabForRole(getStoredUser()?.role));
   const [activeMine, setActiveMine] = useState(() => getStoredUser()?.mine_id || 1);
@@ -41,6 +48,7 @@ export default function App() {
       setCurrentUser(null);
       setDashboardData(null);
       setMines([]);
+      setAccessStage('landing');
     };
     window.addEventListener('coaltrack:unauthorized', handleUnauthorized);
     return () => window.removeEventListener('coaltrack:unauthorized', handleUnauthorized);
@@ -79,6 +87,7 @@ export default function App() {
     setCurrentUser(user);
     setCurrentRole(user.role);
     setActiveTab(dashboardTabForRole(user.role));
+    setAccessStage('portal');
   };
 
   const handleLogout = async () => {
@@ -88,12 +97,15 @@ export default function App() {
       setCurrentUser(null);
       setDashboardData(null);
       setMines([]);
+      setAccessStage('landing');
     }
   };
 
   // Render Login Screen if not authenticated
   if (!currentUser) {
-    return <Suspense fallback={pageFallback}><LoginPage onLoginSuccess={handleLoginSuccess} /></Suspense>;
+    if (accessStage === 'landing') return <LandingPage onAccessPortal={() => setAccessStage('roles')} />;
+    if (accessStage === 'roles') return <RoleSelectionPage onSelect={role => { setSelectedRole(role); setAccessStage('login'); }} onBack={() => setAccessStage('landing')} />;
+    return <Suspense fallback={pageFallback}><LoginPage selectedRole={selectedRole} onBack={() => setAccessStage('roles')} onLoginSuccess={handleLoginSuccess} /></Suspense>;
   }
 
   return (
@@ -129,6 +141,8 @@ export default function App() {
           {activeTab === 'regulator_dashboard' && (
             <RegulatorDashboard data={dashboardData} onTabChange={setActiveTab} />
           )}
+
+          {activeTab === 'admin_dashboard' && currentRole === 'admin' && <AdminDashboard />}
 
           {/* Mine Manager Executive View */}
           {activeTab === 'dashboard' && currentRole === 'manager' && (
