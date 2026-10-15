@@ -39,7 +39,7 @@ export default function Navbar({ currentRole, setCurrentRole, activeMine, setAct
               <option key={m.id} value={m.id}>📍 {m.name} ({m.subsidiary})</option>
             ))
           ) : (
-            <option value={1}>📍 Korba Opencast Pit B (SECL)</option>
+            <option value={1}>📍 Ramagundam OC-II (Singareni)</option>
           )}
         </select>
 

@@ -29,7 +29,7 @@ export default function SupervisorDashboard({ data, onTabChange }) {
             <Pickaxe className="w-4 h-4 text-amber-600" />
             <span>Field Supervisor Portal — Operational Shift Command</span>
           </div>
-          <h2 className="text-2xl font-bold text-slate-900 font-['Outfit']">Korba Opencast Pit B — Field Shift Log</h2>
+          <h2 className="text-2xl font-bold text-slate-900 font-['Outfit']">Ramagundam OC-II — Field Shift Log</h2>
           <p className="text-xs text-slate-600 font-medium mt-1">
             Managing daily bench inspections, field safety observations, and Shift A worker tasks
           </p>

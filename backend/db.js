@@ -171,7 +171,7 @@ function initDb() {
 
     // Seed Mines
     const insertMine = db.prepare('INSERT INTO mines (name, code, subsidiary, location, lat, lng, status, safety_score, production_target, production_actual) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
-    insertMine.run('Korba Opencast Pit B', 'KRB-01', 'SECL', 'Korba, Chhattisgarh', 22.3595, 82.7501, 'Active', 88, 120000, 114500);
+    insertMine.run('Ramagundam OC-II', 'RGD-OC2', 'Singareni Collieries Company Limited', 'Ramagundam, Telangana', null, null, 'Active', 88, 120000, 114500);
     insertMine.run('Jharia Underground Block-3', 'JHR-03', 'BCCL', 'Dhanbad, Jharkhand', 23.7417, 86.4156, 'Active', 79, 85000, 78200);
     insertMine.run('Singrauli North Quarry', 'SNG-02', 'NCL', 'Singrauli, Madhya Pradesh', 24.1981, 82.6685, 'Active', 93, 150000, 152100);
 
@@ -263,7 +263,7 @@ function initDb() {
       'Rajesh Kumar',
       '2026-09-15',
       JSON.stringify({
-        mine_name: 'Korba Opencast Pit B',
+        mine_name: 'Ramagundam OC-II',
         inspector: 'V. K. Singh',
         compliance_status: 'Compliant with minor observations',
         ventilation_cfm: '45,000 CFM',
@@ -308,6 +308,13 @@ function initDb() {
     db.prepare('INSERT INTO users (name, email, role, mine_id, avatar, password_hash) VALUES (?, ?, ?, ?, ?, ?)')
       .run('CoalTrack System Administrator', 'admin@coaltrack.gov.in', 'admin', null, null, hashPassword('admin123'));
   }
+
+  // Replace the original Korba sample record for existing local installations.
+  // The map searches by this official mine name instead of using placeholder coordinates.
+  db.prepare(`UPDATE mines SET name = ?, code = ?, subsidiary = ?, location = ?, lat = NULL, lng = NULL
+    WHERE id = 1 AND code = ?`)
+    .run('Ramagundam OC-II', 'RGD-OC2', 'Singareni Collieries Company Limited', 'Ramagundam, Telangana', 'KRB-01');
+  db.prepare('UPDATE gis_zones SET lat = NULL, lng = NULL WHERE mine_id = 1').run();
 
   // Demo staffing for Ramagundam OC-II. Each row is tied to a section and shift,
   // so a worker can be assigned to a different supervisor on another shift.

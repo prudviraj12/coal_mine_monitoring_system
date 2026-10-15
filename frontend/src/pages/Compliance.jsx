@@ -118,7 +118,7 @@ export default function Compliance({ mineId }) {
                     <span className="flex items-center gap-1 text-amber-700 font-bold">
                       <Calendar className="w-3.5 h-3.5" /> Due Date: {rule.due_date}
                     </span>
-                    <span>Mine: {rule.mine_name || 'Korba Opencast Pit B'}</span>
+                    <span>Mine: {rule.mine_name || 'Ramagundam OC-II'}</span>
                   </div>
                 </div>
 

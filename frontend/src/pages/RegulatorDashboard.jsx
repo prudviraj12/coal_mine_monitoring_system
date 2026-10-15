@@ -3,13 +3,13 @@ import { ShieldCheck, Building, FileText, CheckSquare, Download, AlertTriangle, 
 
 export default function RegulatorDashboard({ data, onTabChange }) {
   const complianceRules = data?.compliance_rules || [
-    { id: 1, authority: 'DGMS', title: 'Quarterly Ventilation & Slope Audit', category: 'Safety', due_date: '2026-09-30', status: 'Warning', score: 78, mine_name: 'Korba Opencast Pit B' },
-    { id: 2, authority: 'MoEFCC', title: 'Ambient PM10 Emission Return', category: 'Environmental', due_date: '2026-10-15', status: 'Compliant', score: 95, mine_name: 'Korba Opencast Pit B' },
+    { id: 1, authority: 'DGMS', title: 'Quarterly Ventilation & Slope Audit', category: 'Safety', due_date: '2026-09-30', status: 'Warning', score: 78, mine_name: 'Ramagundam OC-II' },
+    { id: 2, authority: 'MoEFCC', title: 'Ambient PM10 Emission Return', category: 'Environmental', due_date: '2026-10-15', status: 'Compliant', score: 95, mine_name: 'Ramagundam OC-II' },
     { id: 3, authority: 'CPCB', title: 'Mine Water Discharge Check', category: 'Environmental', due_date: '2026-09-25', status: 'Pending', score: 88, mine_name: 'Jharia Underground Block-3' }
   ];
 
   const nationalMines = [
-    { id: 1, name: 'Korba Opencast Pit B', subsidiary: 'SECL', location: 'Chhattisgarh', score: 88, status: 'Audit Passed', dgmsRef: 'DGMS/CMR-2017/1042' },
+    { id: 1, name: 'Ramagundam OC-II', subsidiary: 'Singareni Collieries Company Limited', location: 'Ramagundam, Telangana', score: 88, status: 'Audit Passed', dgmsRef: 'DGMS/CMR-2017/1042' },
     { id: 2, name: 'Jharia Underground Block-3', subsidiary: 'BCCL', location: 'Jharkhand', score: 79, status: 'Under Inspection', dgmsRef: 'DGMS/CMR-2017/0881' },
     { id: 3, name: 'Singrauli North Quarry', subsidiary: 'NCL', location: 'Madhya Pradesh', score: 93, status: 'Audit Passed', dgmsRef: 'DGMS/CMR-2017/1290' }
   ];
@@ -50,7 +50,7 @@ export default function RegulatorDashboard({ data, onTabChange }) {
               <ShieldCheck className="w-5 h-5" />
             </div>
           </div>
-          <p className="text-xs text-slate-600 mt-3 font-semibold">Across SECL, BCCL & NCL Benches</p>
+          <p className="text-xs text-slate-600 mt-3 font-semibold">Across Singareni, BCCL & NCL mines</p>
         </div>
 
         <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs border-l-4 border-l-blue-600">

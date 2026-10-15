@@ -33,7 +33,7 @@ export default function MineMap({ mineId }) {
             <Compass className="w-4 h-4 text-rose-600" />
             <span>Mine safety map</span>
           </div>
-          <h2 className="text-2xl font-bold text-slate-900 font-['Outfit']">Korba Mine — Safety Map</h2>
+          <h2 className="text-2xl font-bold text-slate-900 font-['Outfit']">Ramagundam OC-II — Safety Map</h2>
           <p className="text-xs text-slate-600 font-medium mt-1">
             See safe areas, warning areas, roads, and important safety information.
           </p>
@@ -70,12 +70,12 @@ export default function MineMap({ mineId }) {
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
               <span className="font-extrabold text-slate-900">Live mine safety map</span>
             </div>
-            <p className="text-[10px] text-slate-600 font-semibold">Coordinates: 22.3595° N, 82.7501° E</p>
+            <p className="text-[10px] text-slate-600 font-semibold">Singareni Collieries Company Limited, Ramagundam</p>
           </div>
 
           {/* Interactive SVG Mine Layout Diagram (Light/Government Map Style) */}
           <div className="w-full h-80 my-auto relative bg-slate-100/90 rounded-xl border border-slate-300 p-1 flex items-center justify-center overflow-hidden">
-            <iframe title="Google Maps mine location" className="w-full h-full rounded-lg border-0" loading="lazy" src={`https://www.google.com/maps?q=${zones[0]?.lat || 22.3595},${zones[0]?.lng || 82.7501}&z=15&output=embed`} />
+            <iframe title="Google Maps mine location" className="w-full h-full rounded-lg border-0" loading="lazy" src={`https://www.google.com/maps?q=${encodeURIComponent('Ramagundam OC-II, Singareni Collieries Company Limited, Telangana')}&z=15&output=embed`} />
             <svg viewBox="0 0 800 400" className="hidden">
               {/* Mine Outer Boundary */}
               <polygon
@@ -186,7 +186,7 @@ export default function MineMap({ mineId }) {
                 </div>
                 <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
                   <p className="text-slate-500 text-[10px] uppercase font-bold">Location</p>
-                  <p className="text-slate-900 font-bold mt-0.5">{selectedZone.lat.toFixed(4)}°, {selectedZone.lng.toFixed(4)}°</p>
+                  <p className="text-slate-900 font-bold mt-0.5">Ramagundam OC-II</p>
                 </div>
               </div>
 

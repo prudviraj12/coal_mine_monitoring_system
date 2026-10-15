@@ -26,11 +26,11 @@ export default function WorkerDashboard({ user }) {
   };
 
   const shiftLogs = [
-    { date: '2026-09-18', shift: 'Shift A (06:00 - 14:00)', inTime: '05:50 AM', outTime: '02:05 PM', status: 'Present', location: 'Korba Pit Bench 4' },
-    { date: '2026-09-17', shift: 'Shift A (06:00 - 14:00)', inTime: '05:55 AM', outTime: '02:00 PM', status: 'Present', location: 'Korba Pit Bench 4' },
-    { date: '2026-09-16', shift: 'Shift A (06:00 - 14:00)', inTime: '05:48 AM', outTime: '02:10 PM', status: 'Present', location: 'Korba Pit Bench 3' },
+    { date: '2026-09-18', shift: 'Shift A (06:00 - 14:00)', inTime: '05:50 AM', outTime: '02:05 PM', status: 'Present', location: 'Ramagundam OC-II Bench 4' },
+    { date: '2026-09-17', shift: 'Shift A (06:00 - 14:00)', inTime: '05:55 AM', outTime: '02:00 PM', status: 'Present', location: 'Ramagundam OC-II Bench 4' },
+    { date: '2026-09-16', shift: 'Shift A (06:00 - 14:00)', inTime: '05:48 AM', outTime: '02:10 PM', status: 'Present', location: 'Ramagundam OC-II Bench 3' },
     { date: '2026-09-15', shift: 'Shift A (06:00 - 14:00)', inTime: '-', outTime: '-', status: 'On Leave', location: 'Sanctioned Casual Leave' },
-    { date: '2026-09-14', shift: 'Shift A (06:00 - 14:00)', inTime: '05:52 AM', outTime: '02:00 PM', status: 'Present', location: 'Korba Pit Bench 2' }
+    { date: '2026-09-14', shift: 'Shift A (06:00 - 14:00)', inTime: '05:52 AM', outTime: '02:00 PM', status: 'Present', location: 'Ramagundam OC-II Bench 2' }
   ];
 
   return (
@@ -49,7 +49,7 @@ export default function WorkerDashboard({ user }) {
               </span>
             </div>
             <p className="text-xs text-slate-600 font-semibold mt-0.5">
-              Excavator Operator • Operations Team • Korba Mine
+              Excavator Operator • Operations Team • Ramagundam OC-II
             </p>
           </div>
         </div>

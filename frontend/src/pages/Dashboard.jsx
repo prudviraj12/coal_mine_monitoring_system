@@ -27,7 +27,7 @@ import SectionStaffing from '../components/SectionStaffing';
 
 export default function Dashboard({ data, role, onTabChange }) {
   const defaultData = {
-    mine: { name: 'Korba Opencast Pit B', subsidiary: 'SECL', state: 'Chhattisgarh' },
+    mine: { name: 'Ramagundam OC-II', subsidiary: 'Singareni Collieries Company Limited', state: 'Telangana' },
     kpis: {
       compliance_score: 92,
       safety_score: 88,
@@ -79,7 +79,7 @@ export default function Dashboard({ data, role, onTabChange }) {
             {role === 'regulator' && 'Directorate General of Mines Safety (DGMS) Portal'}
           </h2>
           <p className="text-sm text-slate-600 mt-1 font-medium">
-            Monitoring <strong className="text-slate-900 font-bold">{mine ? mine.name : 'Korba Opencast Pit B'}</strong> ({mine ? mine.subsidiary : 'SECL'}) • Real-time Compliance Telemetry
+            Monitoring <strong className="text-slate-900 font-bold">{mine ? mine.name : 'Ramagundam OC-II'}</strong> ({mine ? mine.subsidiary : 'Singareni Collieries Company Limited'}) • Real-time Compliance Telemetry
           </p>
         </div>
 
