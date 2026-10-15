@@ -17,10 +17,10 @@ import {
 export default function Sidebar({ activeTab, setActiveTab, currentRole }) {
   // Worker-specific navigation items (Simple & clear labels for mine workers)
   const workerNavItems = [
-    { id: 'worker_dashboard', label: 'My Work & Salary', icon: HardHat, badge: 'My Pay' },
-    { id: 'gis', label: 'Safety Mine Map', icon: MapPin, badge: 'Map' },
-    { id: 'workforce', label: 'Shift Schedule & Duty', icon: Users, badge: 'My Shift' },
-    { id: 'grievances', label: 'Report Safety Problem', icon: MessageSquareWarning }
+    { id: 'worker_dashboard', label: 'My Work & Pay', icon: HardHat, badge: 'Today' },
+    { id: 'gis', label: 'Mine Safety Map', icon: MapPin, badge: 'Map' },
+    { id: 'workforce', label: 'My Shift', icon: Users, badge: 'Shift' },
+    { id: 'grievances', label: 'Report a Problem', icon: MessageSquareWarning }
   ];
 
   // Field Supervisor-specific navigation items

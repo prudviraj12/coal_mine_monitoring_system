@@ -31,11 +31,11 @@ export default function MineMap({ mineId }) {
         <div>
           <div className="flex items-center gap-2 text-rose-700 text-xs font-bold uppercase tracking-wider mb-1">
             <Compass className="w-4 h-4 text-rose-600" />
-            <span>Interactive GIS Mine Visualizer & Telemetry</span>
+            <span>Mine safety map</span>
           </div>
-          <h2 className="text-2xl font-bold text-slate-900 font-['Outfit']">Korba Opencast Pit B — Spatial Risk Map</h2>
+          <h2 className="text-2xl font-bold text-slate-900 font-['Outfit']">Korba Mine — Safety Map</h2>
           <p className="text-xs text-slate-600 font-medium mt-1">
-            Real-time geospatial layout of extraction benches, dumper routes, gas sensors, and slope displacement heatmaps
+            See safe areas, warning areas, roads, and important safety information.
           </p>
         </div>
 
@@ -47,7 +47,7 @@ export default function MineMap({ mineId }) {
               layerMode === 'heatmap' ? 'bg-rose-100 text-rose-800 border border-rose-300' : 'text-slate-600'
             }`}
           >
-            <Flame className="w-3.5 h-3.5 text-rose-600" /> Slope Risk Heatmap
+            <Flame className="w-3.5 h-3.5 text-rose-600" /> Ground Safety
           </button>
           <button
             onClick={() => setLayerMode('gas')}
@@ -55,7 +55,7 @@ export default function MineMap({ mineId }) {
               layerMode === 'gas' ? 'bg-blue-100 text-blue-800 border border-blue-300' : 'text-slate-600'
             }`}
           >
-            <Wind className="w-3.5 h-3.5 text-blue-600" /> CH4 Gas Sensors
+            <Wind className="w-3.5 h-3.5 text-blue-600" /> Gas Levels
           </button>
         </div>
       </div>
@@ -68,7 +68,7 @@ export default function MineMap({ mineId }) {
           <div className="absolute top-6 left-6 z-10 bg-white/95 shadow-md px-3.5 py-2 rounded-xl border border-slate-300 text-xs space-y-0.5">
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
-              <span className="font-extrabold text-slate-900">GIS Spatial Telemetry Live</span>
+              <span className="font-extrabold text-slate-900">Live mine safety map</span>
             </div>
             <p className="text-[10px] text-slate-600 font-semibold">Coordinates: 22.3595° N, 82.7501° E</p>
           </div>
@@ -173,19 +173,19 @@ export default function MineMap({ mineId }) {
 
               <div className="grid grid-cols-2 gap-3 text-xs">
                 <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
-                  <p className="text-slate-500 text-[10px] uppercase font-bold">Zone Type</p>
+                  <p className="text-slate-500 text-[10px] uppercase font-bold">Area</p>
                   <p className="text-slate-900 font-bold mt-0.5">{selectedZone.zone_type}</p>
                 </div>
                 <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
-                  <p className="text-slate-500 text-[10px] uppercase font-bold">Methane Gas (CH4)</p>
+                  <p className="text-slate-500 text-[10px] uppercase font-bold">Gas level</p>
                   <p className="text-blue-700 font-bold mt-0.5">{selectedZone.methane_ppm}% PPM</p>
                 </div>
                 <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
-                  <p className="text-slate-500 text-[10px] uppercase font-bold">Particulate PM10</p>
+                  <p className="text-slate-500 text-[10px] uppercase font-bold">Dust level</p>
                   <p className="text-amber-800 font-bold mt-0.5">{selectedZone.dust_pm10} µg/m³</p>
                 </div>
                 <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
-                  <p className="text-slate-500 text-[10px] uppercase font-bold">GPS Benchmark</p>
+                  <p className="text-slate-500 text-[10px] uppercase font-bold">Location</p>
                   <p className="text-slate-900 font-bold mt-0.5">{selectedZone.lat.toFixed(4)}°, {selectedZone.lng.toFixed(4)}°</p>
                 </div>
               </div>
@@ -197,7 +197,7 @@ export default function MineMap({ mineId }) {
                     Automated Hazard Action Triggered
                   </p>
                   <p className="text-[11px] text-slate-700 font-medium">
-                    Highwall radar telemetry flags 4.2mm slope micro-movement over 12 hrs. Shift supervisor notified.
+                    The ground has moved slightly in the last 12 hours. Your supervisor has been informed. Stay away from this area.
                   </p>
                 </div>
               )}
@@ -207,7 +207,7 @@ export default function MineMap({ mineId }) {
           )}
 
           <div className="pt-3 border-t border-slate-200 text-center text-slate-500 text-xs font-medium">
-            Coordinates validated against Coal India GIS Database
+            Map is shown using the mine location
           </div>
         </div>
       </div>

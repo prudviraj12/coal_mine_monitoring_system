@@ -49,14 +49,14 @@ export default function WorkerDashboard({ user }) {
               </span>
             </div>
             <p className="text-xs text-slate-600 font-semibold mt-0.5">
-              Excavator Operator • Operations Dept • Korba Opencast Pit B (SECL)
+              Excavator Operator • Operations Team • Korba Mine
             </p>
           </div>
         </div>
 
         <div className="flex items-center gap-2 bg-emerald-50 border border-emerald-200 px-3.5 py-2 rounded-xl text-emerald-900 text-xs font-bold">
           <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
-          <span>Health Clearance: {attendanceStats.healthStatus}</span>
+          <span>Fit for work: {attendanceStats.healthStatus}</span>
         </div>
       </div>
 
@@ -66,7 +66,7 @@ export default function WorkerDashboard({ user }) {
         <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs border-l-4 border-l-blue-600">
           <div className="flex justify-between items-start">
             <div>
-              <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Days Attended</p>
+              <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Days at Work</p>
               <h3 className="text-3xl font-bold text-blue-700 mt-1 font-['Outfit']">
                 {attendanceStats.daysAttended} <span className="text-xs text-slate-500 font-normal">/ {attendanceStats.totalWorkingDays} Days</span>
               </h3>
@@ -77,7 +77,7 @@ export default function WorkerDashboard({ user }) {
           </div>
           <p className="text-xs text-slate-600 mt-3 font-semibold flex items-center gap-1">
             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-            <span>Attendance Rate: {attendanceStats.attendanceRate}% (Qualifies for Bonus)</span>
+            <span>You attended {attendanceStats.attendanceRate}% of your shifts</span>
           </p>
         </div>
 
@@ -85,7 +85,7 @@ export default function WorkerDashboard({ user }) {
         <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs border-l-4 border-l-emerald-600">
           <div className="flex justify-between items-start">
             <div>
-              <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Net Monthly Salary</p>
+              <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Pay This Month</p>
               <h3 className="text-3xl font-bold text-emerald-700 mt-1 font-['Outfit']">
                 ₹{salaryDetails.netPay.toLocaleString('en-IN')}
               </h3>
@@ -104,7 +104,7 @@ export default function WorkerDashboard({ user }) {
         <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs border-l-4 border-l-amber-500">
           <div className="flex justify-between items-start">
             <div>
-              <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Overtime & Safety Bonus</p>
+              <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Extra Pay</p>
               <h3 className="text-3xl font-bold text-amber-700 mt-1 font-['Outfit']">
                 ₹{(salaryDetails.overtimePay + salaryDetails.safetyBonus).toLocaleString('en-IN')}
               </h3>
@@ -144,18 +144,18 @@ export default function WorkerDashboard({ user }) {
           <div className="flex items-center justify-between border-b border-slate-200 pb-3">
             <div>
               <h3 className="text-base font-bold text-slate-900 font-['Outfit']">Salary Breakdown — {salaryDetails.month}</h3>
-              <p className="text-xs text-slate-500 font-medium">Statutory allowances under Coal Mines Provident Fund (CMPF)</p>
+              <p className="text-xs text-slate-500 font-medium">Your pay, extra work pay, and deductions</p>
             </div>
 
             <button className="px-3.5 py-2 rounded-xl bg-slate-900 text-white font-bold text-xs flex items-center gap-1.5 hover:bg-slate-800 transition">
               <Download className="w-3.5 h-3.5 text-amber-400" />
-              Download Payslip (PDF)
+              Download Pay Slip
             </button>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
             <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
-              <p className="text-slate-500 font-bold uppercase text-[10px]">Earnings & Allowances</p>
+              <p className="text-slate-500 font-bold uppercase text-[10px]">Money You Earned</p>
               <div className="flex justify-between">
                 <span className="text-slate-700 font-semibold">Basic Wage:</span>
                 <span className="text-slate-900 font-bold">₹{salaryDetails.basePay.toLocaleString('en-IN')}</span>
@@ -175,9 +175,9 @@ export default function WorkerDashboard({ user }) {
             </div>
 
             <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
-              <p className="text-slate-500 font-bold uppercase text-[10px]">Statutory Deductions</p>
+              <p className="text-slate-500 font-bold uppercase text-[10px]">Money Taken From Pay</p>
               <div className="flex justify-between">
-                <span className="text-slate-700 font-semibold">Coal Mines PF (CMPF 12%):</span>
+                <span className="text-slate-700 font-semibold">Retirement savings:</span>
                 <span className="text-rose-700 font-bold">- ₹1,800</span>
               </div>
               <div className="flex justify-between">

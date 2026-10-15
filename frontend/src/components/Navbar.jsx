@@ -17,12 +17,12 @@ export default function Navbar({ currentRole, setCurrentRole, activeMine, setAct
         </div>
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-xl font-bold tracking-tight text-slate-900 font-['Outfit']">CoalTrack AI</h1>
+            <h1 className="text-xl font-bold tracking-tight text-slate-900 font-['Outfit']">CoalTrack</h1>
             <span className="text-[10px] uppercase tracking-wider font-extrabold px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-300">
-              Government Portal
+              Mine Safety Portal
             </span>
           </div>
-          <p className="text-xs text-slate-600 font-medium hidden sm:block">Ministry of Coal & DGMS Smart Compliance Monitoring Framework</p>
+          <p className="text-xs text-slate-600 font-medium hidden sm:block">Simple safety and work information for every mine worker</p>
         </div>
       </div>
 
@@ -85,7 +85,7 @@ export default function Navbar({ currentRole, setCurrentRole, activeMine, setAct
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
           </span>
           <Radio className="w-3 h-3 text-emerald-600" />
-          <span>NIC Node Connected</span>
+          <span>System connected</span>
         </div>
 
         {/* Notifications */}

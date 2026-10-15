@@ -90,6 +90,7 @@ export const fetchInspections = mineId => request(withMine('/inspections', mineI
 export const fetchAIInsights = mineId => request(withMine('/ai/insights', mineId));
 export const fetchOCRHistory = () => request('/ocr/history');
 export const fetchWorkforce = mineId => request(withMine('/workforce', mineId));
+export const fetchSectionStaffing = () => request('/section-staffing');
 export const fetchGISZones = mineId => request(withMine('/gis', mineId));
 export const fetchGrievances = mineId => request(withMine('/grievances', mineId));
 export const fetchAdminOverview = () => request('/admin/overview');

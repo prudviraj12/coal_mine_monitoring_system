@@ -202,6 +202,22 @@ app.get('/api/workforce', (req, res) => {
   return res.json({ summary, employees });
 });
 
+app.get('/api/section-staffing', allowRoles('manager'), (req, res) => {
+  const mineId = effectiveMineId(req);
+  const shift = String(req.query.shift || 'Shift A (06:00 - 14:00)');
+  const sections = db.prepare(`
+    SELECT ws.id, ws.name, ss.shift, ss.supervisor_name,
+      COUNT(swa.id) AS worker_count
+    FROM work_sections ws
+    JOIN section_supervisors ss ON ss.section_id = ws.id
+    LEFT JOIN section_worker_assignments swa ON swa.section_supervisor_id = ss.id
+    WHERE ws.mine_id = ? AND ss.shift = ?
+    GROUP BY ws.id, ws.name, ss.id, ss.shift, ss.supervisor_name
+    ORDER BY ws.id
+  `).all(mineId, shift);
+  return res.json({ mine_name: 'Ramagundam OC-II', shift, sections });
+});
+
 app.get(['/api/gis', '/api/risk-zones'], (req, res) => {
   const filter = optionalMineFilter(req);
   return res.json(db.prepare(`SELECT * FROM gis_zones${filter.sql} ORDER BY risk_score DESC`).all(...filter.params));

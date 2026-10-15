@@ -110,6 +110,15 @@ test('non-regulators cannot escape their assigned mine using a query parameter',
   assert.equal(payload.mine.id, 1);
 });
 
+test('manager sees one supervisor and a worker count for every active work section', async () => {
+  const { response, payload } = await api('/api/section-staffing', { token: tokens.manager });
+  assert.equal(response.status, 200);
+  assert.equal(payload.mine_name, 'Ramagundam OC-II');
+  assert.equal(payload.sections.length, 9);
+  assert.ok(payload.sections.every(section => section.supervisor_name));
+  assert.ok(payload.sections.every(section => section.worker_count === 3));
+});
+
 test('invalid create requests return structured HTTP 400 errors', async () => {
   const cases = [
     ['/api/compliance', tokens.manager],

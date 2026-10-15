@@ -127,6 +127,29 @@ function initDb() {
       methane_ppm REAL,
       dust_pm10 REAL
     );
+
+    CREATE TABLE IF NOT EXISTS work_sections (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      mine_id INTEGER NOT NULL,
+      name TEXT NOT NULL,
+      UNIQUE(mine_id, name)
+    );
+
+    CREATE TABLE IF NOT EXISTS section_supervisors (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      section_id INTEGER NOT NULL,
+      shift TEXT NOT NULL,
+      supervisor_name TEXT NOT NULL,
+      UNIQUE(section_id, shift)
+    );
+
+    CREATE TABLE IF NOT EXISTS section_worker_assignments (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      section_supervisor_id INTEGER NOT NULL,
+      worker_name TEXT NOT NULL,
+      worker_code TEXT NOT NULL,
+      UNIQUE(section_supervisor_id, worker_code)
+    );
   `);
 
   // Migrate databases created before password authentication was introduced.
@@ -284,6 +307,33 @@ function initDb() {
   if (!admin) {
     db.prepare('INSERT INTO users (name, email, role, mine_id, avatar, password_hash) VALUES (?, ?, ?, ?, ?, ?)')
       .run('CoalTrack System Administrator', 'admin@coaltrack.gov.in', 'admin', null, null, hashPassword('admin123'));
+  }
+
+  // Demo staffing for Ramagundam OC-II. Each row is tied to a section and shift,
+  // so a worker can be assigned to a different supervisor on another shift.
+  const staffingCount = db.prepare('SELECT COUNT(*) AS count FROM work_sections WHERE mine_id = ?').get(1).count;
+  if (staffingCount === 0) {
+    const sections = [
+      'Coal Extraction Section', 'Drilling Section', 'Blasting Section',
+      'Loading Section', 'Haulage Section', 'CHP Section',
+      'Mechanical Section', 'Safety Section', 'Survey Section'
+    ];
+    const shifts = ['Shift A (06:00 - 14:00)', 'Shift B (14:00 - 22:00)', 'Shift C (22:00 - 06:00)'];
+    const insertSection = db.prepare('INSERT INTO work_sections (mine_id, name) VALUES (?, ?)');
+    const insertSupervisor = db.prepare('INSERT INTO section_supervisors (section_id, shift, supervisor_name) VALUES (?, ?, ?)');
+    const insertWorker = db.prepare('INSERT INTO section_worker_assignments (section_supervisor_id, worker_name, worker_code) VALUES (?, ?, ?)');
+    const getSection = db.prepare('SELECT id FROM work_sections WHERE mine_id = ? AND name = ?');
+
+    for (const [sectionIndex, sectionName] of sections.entries()) {
+      insertSection.run(1, sectionName);
+      const sectionId = getSection.get(1, sectionName).id;
+      for (const [shiftIndex, shift] of shifts.entries()) {
+        const supervisor = insertSupervisor.run(sectionId, shift, `Demo Supervisor ${sectionIndex + 1}${String.fromCharCode(65 + shiftIndex)}`);
+        for (let workerNumber = 1; workerNumber <= 3; workerNumber += 1) {
+          insertWorker.run(supervisor.lastInsertRowid, `Demo Worker ${workerNumber}`, `RGD-${sectionIndex + 1}-${shiftIndex + 1}-${workerNumber}`);
+        }
+      }
+    }
   }
 }
 
