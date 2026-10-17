@@ -26,3 +26,13 @@ Starting only the frontend will leave login unavailable because authentication i
 | System administrator | `admin@coaltrack.gov.in` | `admin123` |
 
 Run all automated tests with `npm test` and build the frontend with `npm run build`.
+
+## GIS database (PostgreSQL + PostGIS)
+
+For mine boundaries, section polygons, hazards, and worker GPS events, start the local PostGIS service:
+
+```bash
+docker compose up -d postgis
+```
+
+Copy `backend/.env.example` to `backend/.env` and set `DATABASE_URL`. The database schema is created automatically by Docker. Import only approved mine-plan GeoJSON/KML coordinates into `spatial_mines` and `spatial_sections`; the project intentionally does not create guessed safety boundaries.

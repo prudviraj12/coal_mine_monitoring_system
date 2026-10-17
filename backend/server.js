@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const db = require('./db');
+const { getMineSpatialData } = require('./postgis');
 const { allowRoles, authenticate, issueToken, verifyPassword } = require('./auth');
 
 const app = express();
@@ -221,6 +222,19 @@ app.get('/api/section-staffing', allowRoles('manager'), (req, res) => {
 app.get(['/api/gis', '/api/risk-zones'], (req, res) => {
   const filter = optionalMineFilter(req);
   return res.json(db.prepare(`SELECT * FROM gis_zones${filter.sql} ORDER BY risk_score DESC`).all(...filter.params));
+});
+
+app.get('/api/gis/map', async (req, res) => {
+  try {
+    const spatialData = await getMineSpatialData(effectiveMineId(req));
+    if (!spatialData) {
+      return res.status(404).json({ error: 'Mine boundary data has not been imported yet' });
+    }
+    return res.json(spatialData);
+  } catch (error) {
+    console.error('Unable to load spatial mine data:', error.message);
+    return res.status(503).json({ error: 'Spatial map service is unavailable' });
+  }
 });
 
 app.get('/api/inspection-map', allowRoles('supervisor', 'manager', 'regulator'), (req, res) => {

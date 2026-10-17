@@ -1,0 +1,17 @@
+services:
+  postgis:
+    image: postgis/postgis:16-3.5
+    container_name: coaltrack-postgis
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: coaltrack
+      POSTGRES_USER: coaltrack
+      POSTGRES_PASSWORD: change-this-local-password
+    ports:
+      - "5432:5432"
+    volumes:
+      - coaltrack_postgis_data:/var/lib/postgresql/data
+      - ./backend/db/postgis/001_gis.sql:/docker-entrypoint-initdb.d/001_gis.sql:ro
+
+volumes:
+  coaltrack_postgis_data:
